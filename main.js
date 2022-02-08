@@ -87,7 +87,12 @@ let resetForm = () => {
 };
 
 (() => {
-  data = JSON.parse(localStorage.getItem("data"));
-  console.log(data);
-  createTasks();
+  let localSave = JSON.parse(localStorage.getItem("data"));
+  if (localSave.length < 1) {
+    data = localSave;
+  } else {
+    data = JSON.parse(localStorage.getItem("data"));
+    console.log(data);
+    createTasks();
+  }
 })();
